@@ -201,7 +201,7 @@ section[data-testid="stSidebar"] {
 """, unsafe_allow_html=True)
 
 # ─── CONSTANTS / DEFAULTS ────────────────────────────────────────────────────
-TEMPLATE_PATH = r"c:\Users\vpath\OneDrive\Desktop\SUN APP\L KAMSAMMA   3263.docx"
+TEMPLATE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "L KAMSAMMA   3263.docx")
 
 DEFAULTS = {
     "file_number": "G/3263/2025",
