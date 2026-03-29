@@ -371,6 +371,13 @@ def generate_document(d, respondents):
     hearing_year = d["hearing_year"]
 
     # Build paragraph-level mapping
+    pet_mobile = d.get("petitioner_mobile", "")
+    pet_relation_addr = (
+        f"{d['petitioner_relation']}, R/o {pet_addr}" if d['petitioner_relation'] else f"R/o {pet_addr}"
+    )
+    if pet_mobile:
+        pet_relation_addr += f", Mobile: {pet_mobile}"
+
     mapping = {
         "G/3263/2025": file_no,
         "Smt. Lingala Kamsamma": petitioner_name,
@@ -384,9 +391,7 @@ def generate_document(d, respondents):
         "Maheshwaram Mandal": mandal,
         "Smt. Bhargavi and Smt. Ashwini": all_resp_names,
         "   .11.2025": f"  .{hearing_month}.{hearing_year}",
-        "W/o Late L. Narsimha Das, R/o Ravirala Village, Maheshwaram Mandal, Ranga Reddy District": (
-            f"{d['petitioner_relation']}, R/o {pet_addr}" if d['petitioner_relation'] else f"R/o {pet_addr}"
-        ),
+        "W/o Late L. Narsimha Das, R/o Ravirala Village, Maheshwaram Mandal, Ranga Reddy District": pet_relation_addr,
     }
 
     # Process all paragraphs
